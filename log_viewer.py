@@ -39,6 +39,7 @@ class MainWindow(QMainWindow):
         logFileLimitAction2MB = self.__create_action_for_file_limit(2)
         logFileLimitAction4MB = self.__create_action_for_file_limit(4)
         logFileLimitAction8MB = self.__create_action_for_file_limit(8)
+        logFileLimitAction16MB = self.__create_action_for_file_limit(16)
 
         # Toolbar
         toolbar = self.addToolBar("main")
@@ -70,6 +71,7 @@ class MainWindow(QMainWindow):
         menu_settings.addAction(logFileLimitAction2MB)
         menu_settings.addAction(logFileLimitAction4MB)
         menu_settings.addAction(logFileLimitAction8MB)
+        menu_settings.addAction(logFileLimitAction16MB)
         
         # List
         self.__list = QListWidget()
