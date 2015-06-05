@@ -30,7 +30,7 @@ class MainWindow(QMainWindow):
         exitAction.setStatusTip("Exit from the application")
         exitAction.triggered.connect(self.close)
 
-        aboutLogviewerAction = QAction("&About logviewer", self)
+        aboutLogviewerAction = QAction("&About LogViewer", self)
         aboutLogviewerAction.triggered.connect(self.__about_logviewer)
 
         aboutLogviewerQtAction = QAction("&About Qt", self)
