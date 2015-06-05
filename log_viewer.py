@@ -30,6 +30,12 @@ class MainWindow(QMainWindow):
         exitAction.setStatusTip("Exit from the application")
         exitAction.triggered.connect(self.close)
 
+        aboutLogviewerAction = QAction("&About logviewer", self)
+        aboutLogviewerAction.triggered.connect(self.__about_logviewer)
+
+        aboutLogviewerQtAction = QAction("&About Qt", self)
+        aboutLogviewerQtAction.triggered.connect(self.__about_qt)
+
         debugMessages = self.__create_toggle_for_level("debug")
         infoMessages = self.__create_toggle_for_level("info")
         errorMessages = self.__create_toggle_for_level("error")
@@ -72,6 +78,10 @@ class MainWindow(QMainWindow):
         menu_settings.addAction(logFileLimitAction4MB)
         menu_settings.addAction(logFileLimitAction8MB)
         menu_settings.addAction(logFileLimitAction16MB)
+
+        menu_help = menubar.addMenu("&Help")
+        menu_help.addAction(aboutLogviewerAction)
+        menu_help.addAction(aboutLogviewerQtAction)
         
         # List
         self.__list = QListWidget()
@@ -122,9 +132,18 @@ class MainWindow(QMainWindow):
             w.setBackground(QBrush(QColor(line["color"])))
             self.__list.addItem(w)
 
+
     def __set_filter(self, evt):
         pass
-            
+
+    def __about_logviewer(self, evt):
+        QMessageBox.about(self, "LogViewer", "This is a simple PyQt log viewer.<br>You can find the lastest version "+
+                "in the <a href=\"http://github.com/leonardoce/LogViewer\">LogViewer web site</a>")
+
+    def __about_qt(self, evt):
+        QMessageBox.aboutQt(self)
+
+
 class LogViewerLevel(object):
     def __init__(self, tags, enabled, color):
         self.tags = tags
