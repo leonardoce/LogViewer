@@ -141,7 +141,7 @@ class LogViewerModel(object):
     def __init__(self):
         self.current_file = None
         self.levels = {"debug": LogViewerLevel(["DEBUG"], False, "#FFFFFF"),
-                       "info": LogViewerLevel(["INFO"], False, "#FFFFFF"),
+                       "info": LogViewerLevel(["INFO", "LOG"], False, "#FFFFFF"),
                        "warning": LogViewerLevel(["WARNING", "ATTENZIONE"], True, "#FFFED9"),
                        "error": LogViewerLevel(["ERROR"], True, "#FFB0D4"),
                        "panic": LogViewerLevel(["PANIC"], True, "#FF4096")}
