@@ -5,6 +5,8 @@ import os.path
 from PyQt4.QtGui import *
 from PyQt4.QtCore import Qt
 
+RELEASE_ID = "0.3"
+
 class MainWindow(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
@@ -144,7 +146,7 @@ class MainWindow(QMainWindow):
         pass
 
     def __about_logviewer(self, evt):
-        QMessageBox.about(self, "LogViewer", "This is a simple PyQt log viewer.<br>You can find the lastest version "+
+        QMessageBox.about(self, "LogViewer", "This is a simple PyQt log viewer.<br>Release " + RELEASE_ID + "<br>You can find the latest version "+
                 "in the <a href=\"http://github.com/leonardoce/LogViewer\">LogViewer web site</a>")
 
     def __about_qt(self, evt):
