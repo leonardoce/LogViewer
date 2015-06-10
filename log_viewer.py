@@ -46,6 +46,7 @@ class MainWindow(QMainWindow):
         logFileLimitAction4MB = self.__create_action_for_file_limit(4)
         logFileLimitAction8MB = self.__create_action_for_file_limit(8)
         logFileLimitAction16MB = self.__create_action_for_file_limit(16)
+        logFileLimitActionNoLimit = self.__create_action_for_file_limit(0)
 
         # Toolbar
         toolbar = self.addToolBar("main")
@@ -78,6 +79,7 @@ class MainWindow(QMainWindow):
         menu_settings.addAction(logFileLimitAction4MB)
         menu_settings.addAction(logFileLimitAction8MB)
         menu_settings.addAction(logFileLimitAction16MB)
+        menu_settings.addAction(logFileLimitActionNoLimit)
 
         menu_help = menubar.addMenu("&Help")
         menu_help.addAction(aboutLogviewerAction)
@@ -97,7 +99,12 @@ class MainWindow(QMainWindow):
         return result
 
     def __create_action_for_file_limit(self, limit_mb):
-        result = QAction("Log file limit &%sMB" % (str(limit_mb),), self)
+        if limit_mb>0:
+            message = "Log file limit &%sMB" % (str(limit_mb),)
+        else:
+            message = "No log file limit"
+
+        result = QAction(message, self)
         result.triggered.connect(lambda evt: self.__toggle_limit(limit_mb))
         return result
     
@@ -203,7 +210,7 @@ class LogViewerModel(object):
     def __repos_file(self, f):
         f.seek(0, 2)
         size = f.tell()
-        if size > self.bytes_limit: pos = size - self.bytes_limit
+        if self.bytes_limit>0 and size > self.bytes_limit: pos = size - self.bytes_limit
         else: pos = 0
         f.seek(pos)
 
