@@ -170,7 +170,7 @@ class LogViewerModel(object):
                        "info": LogViewerLevel(["INFO", "LOG"], False, "#FFFFFF"),
                        "warning": LogViewerLevel(["WARNING", "ATTENZIONE"], True, "#FFFED9"),
                        "error": LogViewerLevel(["ERROR"], True, "#FFB0D4"),
-                       "panic": LogViewerLevel(["PANIC"], True, "#FF4096")}
+                       "panic": LogViewerLevel(["PANIC", "FATAL"], True, "#FF4096")}
         self.__bytes_limit = 2 * 1024 * 1024
         self.refresh()
 
